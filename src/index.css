@@ -1,13 +1,54 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat+Subrayada&family=Montserrat:ital,wght@0,200;1,400&family=Open+Sans:wght@500&family=Quicksand:wght@300&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+body {
+  /* font-family: "Josefin Sans", sans-serif; */
+  /* font-family: "Montserrat", sans-serif; */
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+:root {
+  --primary-color: #ffffff;
+  --primary-light: #f2f2f2;
+  --txt-color: #000000;
+  --black: #000000;
+  --white: #ffffff;
+  --error: #ed4337;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
 }

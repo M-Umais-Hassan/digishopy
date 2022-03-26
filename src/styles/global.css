@@ -1,0 +1,230 @@
+.navbar {
+  background-color: white;
+  width: calc(100% - 50px);
+  line-height: 70px;
+  padding: 0 25px;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  margin-bottom: 50px;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.left__box {
+  width: 100%;
+}
+
+.side-bar {
+  flex: 0;
+  background: var(--bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 10px;
+  width: 100%;
+  height: 500px;
+  padding: 10px;
+  position: sticky;
+  -webkit-position: sticky;
+  top: 110px;
+}
+
+.cards__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-height: 80vh;
+}
+
+.product__card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  width: 250px;
+  margin-bottom: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  /* background-color: var(--primary-light); */
+}
+.product__card .img__box {
+  width: 100%;
+  height: 250px;
+}
+
+.product__card .img__box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__card .price__box {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+}
+
+.product__card .price__box .title__area {
+  width: 70%;
+  height: 100%;
+}
+
+.product__card .price__box .btn__area {
+  width: 20%;
+  height: 80%;
+}
+
+.product__card .price__box .btn__area button {
+  width: 100%;
+  height: 90%;
+  font-size: 30px;
+  border-radius: 10px;
+  border: 1px solid var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.product__card .price__box .btn__area button:hover {
+  transform: scale(1.1);
+}
+
+.right__box {
+  height: 600px;
+  flex: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 3px;
+  padding: 10px;
+  position: sticky;
+  -webkit-position: sticky;
+  top: 25px;
+}
+
+.cart {
+  width: 250px;
+  height: 590px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.cart .cart__item {
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  padding: 5px;
+  line-height: 20px;
+  position: relative;
+}
+
+.cart .cart__item .img__box {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.cart .cart__item .img__box img {
+  width: 100%;
+  height: 100%;
+}
+
+.cart .cart__item .delete__btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cart .cart__item .delete__btn svg {
+  color: var(--error);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.cart .cart__item .delete__btn svg:hover {
+  transform: scale(1.2);
+}
+
+.cart .empty__cart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: var(--primary-light);
+}
+
+.order__summary {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.order__summary .order__summary__details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.order__summary .order__summary__details div {
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-light);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.order__summary .order__summary__details div:first-child {
+  margin-right: 30px;
+}
+
+.form__area {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.form__area form {
+  margin-top: 30px;
+}
+
+.form__area form .input__group {
+  display: flex;
+}
+
+.form__area form .input__field {
+  width: calc(100% - 20px);
+  margin: 20px 10px;
+}
+
+.form__area form .input__field input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-light);
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.footer {
+  margin-top: 50px;
+  background-color: var(--primary-light);
+  width: calc(100% - 50px);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 25px;
+}
