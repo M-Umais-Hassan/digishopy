@@ -1,4 +1,5 @@
 import { MdAddShoppingCart } from "react-icons/md";
+import { toast } from "react-toastify";
 import { sliceText } from "../../utils/helpers";
 
 const Card = ({ data, cartItems, setCartItems, setSummary, summary }) => {
@@ -10,6 +11,8 @@ const Card = ({ data, cartItems, setCartItems, setSummary, summary }) => {
         price: summary.price + item.price,
         items: summary.items + 1,
       });
+    } else {
+      toast.warning("Product is already in cart");
     }
   };
   return (

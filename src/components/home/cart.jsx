@@ -17,7 +17,7 @@ const Cart = ({ cartItems, setCartItems, summary, setSummary }) => {
       <h1>Cart</h1>
       {cartItems.length ? (
         cartItems.map((item) => (
-          <div className="cart__item" key={item?.id}>
+          <div className="cart__item" key={item.id}>
             <div className="img__box">
               <img src={item?.image} alt="cart item" />
             </div>
