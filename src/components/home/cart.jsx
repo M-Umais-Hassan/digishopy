@@ -13,32 +13,39 @@ const Cart = ({ cartItems, setCartItems, summary, setSummary }) => {
     });
   };
   return (
-    <div className="cart">
-      <h1>Cart</h1>
-      {cartItems.length ? (
-        cartItems.map((item) => (
-          <div className="cart__item" key={item.id}>
-            <div className="img__box">
-              <img src={item?.image} alt="cart item" />
+    <>
+      <div className="cart">
+        <h1>Cart</h1>
+        {cartItems.length ? (
+          cartItems.map((item) => (
+            <div className="cart__item" key={item.id}>
+              <div className="img__box">
+                <img src={item?.image} alt="cart item" />
+              </div>
+              <div className="cart__item__details__box">
+                <h5>1 X {sliceText(item?.title, 15)}</h5>
+                <h5>{item?.price} Rs</h5>
+              </div>
+              <div
+                className="delete__btn"
+                onClick={() => deleteItem(item.id, item.price)}
+              >
+                <TiDelete />
+              </div>
             </div>
-            <div className="cart__item__details__box">
-              <h5>1 X {sliceText(item?.title, 15)}</h5>
-              <h5>{item?.price} Rs</h5>
-            </div>
-            <div
-              className="delete__btn"
-              onClick={() => deleteItem(item.id, item.price)}
-            >
-              <TiDelete />
-            </div>
+          ))
+        ) : (
+          <div className="empty__cart">
+            <BsCartXFill />
           </div>
-        ))
-      ) : (
-        <div className="empty__cart">
-          <BsCartXFill />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+      {cartItems.length ? (
+        <a href="#form" className="checkout">
+          Checkout
+        </a>
+      ) : null}
+    </>
   );
 };
 

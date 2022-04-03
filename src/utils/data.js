@@ -10,3 +10,8 @@ export const provinces = [
   { id: 5, name: "Punjab", value: "Punjab" },
   { id: 6, name: "Sindh", value: "Sindh" },
 ];
+
+export const genderData = [
+  { id: 1, label: "Men", value: "male" },
+  { id: 2, label: "Women", value: "female" },
+];

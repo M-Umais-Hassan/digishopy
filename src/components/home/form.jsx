@@ -8,7 +8,14 @@ import { placeOrder } from "../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Form = ({ cartItems, price, items, deliveryCharges, openModal }) => {
+const Form = ({
+  cartItems,
+  price,
+  items,
+  deliveryCharges,
+  openModal,
+  clearCartItems,
+}) => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
     firstName: "",
@@ -39,6 +46,7 @@ const Form = ({ cartItems, price, items, deliveryCharges, openModal }) => {
       await placeOrder(formik.values)
         .then(() => {
           formik.resetForm();
+          clearCartItems();
           openModal();
         })
         .catch(() => {
@@ -59,7 +67,7 @@ const Form = ({ cartItems, price, items, deliveryCharges, openModal }) => {
   });
 
   return (
-    <div className="form__area">
+    <div className="form__area" id="form">
       <h1>Order Form</h1>
       <form onSubmit={formik.handleSubmit}>
         <>
@@ -249,9 +257,9 @@ const Form = ({ cartItems, price, items, deliveryCharges, openModal }) => {
                 <input
                   type="text"
                   placeholder="Total Price"
-                  value={`${price} + ${deliveryCharges} = ${
-                    price + deliveryCharges
-                  }`}
+                  value={`${parseFloat(price)} + ${parseFloat(
+                    deliveryCharges
+                  )} = ${parseFloat(price) + parseFloat(deliveryCharges)}`}
                   disabled
                 />
               </div>

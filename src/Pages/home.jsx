@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import OrderSummary from "../components/home/orderSummary";
 import OrderPlaced from "../components/modals/orderPlaced";
 import { ToastContainer } from "react-toastify";
+import Filters from "../components/home/filters";
 
 const Home = () => {
   const deliveryCharges = 120;
@@ -17,21 +18,52 @@ const Home = () => {
   });
   const [showModal, setShowModal] = useState(false);
   const [hideCart, setHideCart] = useState(true);
+  const [hideFilters, setHideFilters] = useState(true);
+  const [genderFilters, setGenderFilters] = useState("");
+  const [brandFilters, setBrandFilters] = useState([]);
 
   return (
     <>
       {showModal && <OrderPlaced closeModal={() => setShowModal(false)} />}
-      <Navbar cartItems={cartItems} handleCart={() => setHideCart(!hideCart)} />
+      {(!hideCart || !hideFilters) && (
+        <div
+          className="overlay__component"
+          onClick={() => {
+            setHideCart(true);
+            setHideFilters(true);
+          }}
+        ></div>
+      )}
+      <Navbar
+        cartItems={cartItems}
+        handleCart={() => setHideCart(!hideCart)}
+        handleFilters={() => setHideFilters(!hideFilters)}
+        hideCart={hideCart}
+        hideFilters={hideFilters}
+      />
       <div className="container main">
-        <div className="left__box">
+        <div className={`filters__box ${hideFilters && "hide"}`}>
+          <Filters
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            setSummary={setSummary}
+            summary={summary}
+            setGenderFilters={setGenderFilters}
+            setBrandFilters={setBrandFilters}
+            brandFilters={brandFilters}
+          />
+        </div>
+        <div className="main__product__box">
           <CardsListing
             cartItems={cartItems}
             setCartItems={setCartItems}
             setSummary={setSummary}
             summary={summary}
+            genderFilters={genderFilters}
+            brandFilters={brandFilters}
           />
         </div>
-        <div className={`right__box ${hideCart && "hide"}`}>
+        <div className={`cart__box ${hideCart && "hide"}`}>
           <Cart
             cartItems={cartItems}
             setCartItems={setCartItems}
@@ -48,6 +80,7 @@ const Home = () => {
           items={summary.items}
           deliveryCharges={deliveryCharges}
           openModal={() => setShowModal(true)}
+          clearCartItems={() => setCartItems([])}
         />
       </div>
       <Footer />
