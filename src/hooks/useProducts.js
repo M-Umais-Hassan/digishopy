@@ -6,8 +6,6 @@ const useProducts = (brandFilters, genderFilters) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log({ genderFilters, brandFilters });
-
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -21,7 +19,6 @@ const useProducts = (brandFilters, genderFilters) => {
       const dataArr = [];
       querySnapshot.forEach((doc) => {
         dataArr.push(doc.data());
-        console.log(doc.data());
       });
       setData(dataArr);
       setLoading(false);

@@ -1,6 +1,9 @@
-import React from "react";
+import { useSelector } from "react-redux";
 
-const OrderSummary = ({ items, price }) => {
+const OrderSummary = () => {
+  const { price, items } = useSelector(
+    (state) => state.productsReducer.summary
+  );
   return (
     <div className="order__summary">
       <h1>Order Summary</h1>

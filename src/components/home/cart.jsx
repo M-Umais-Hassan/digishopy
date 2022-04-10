@@ -1,17 +1,14 @@
 import { TiDelete } from "react-icons/ti";
 import { BsCartXFill } from "react-icons/bs";
 import { sliceText } from "../../utils/helpers";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../redux/actions/productsActions";
+import { Link } from "react-router-dom";
 
-const Cart = ({ cartItems, setCartItems, summary, setSummary }) => {
-  const deleteItem = (id, price) => {
-    const updatedArr = cartItems.filter((el) => el.id !== id);
-    setCartItems(updatedArr);
-    setSummary({
-      ...summary,
-      price: summary.price - price,
-      items: summary.items - 1,
-    });
-  };
+const Cart = () => {
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.productsReducer);
+
   return (
     <>
       <div className="cart">
@@ -28,7 +25,7 @@ const Cart = ({ cartItems, setCartItems, summary, setSummary }) => {
               </div>
               <div
                 className="delete__btn"
-                onClick={() => deleteItem(item.id, item.price)}
+                onClick={() => dispatch(removeFromCart(item))}
               >
                 <TiDelete />
               </div>
@@ -41,9 +38,9 @@ const Cart = ({ cartItems, setCartItems, summary, setSummary }) => {
         )}
       </div>
       {cartItems.length ? (
-        <a href="#form" className="checkout">
+        <Link to="/place-order" className="checkout">
           Checkout
-        </a>
+        </Link>
       ) : null}
     </>
   );

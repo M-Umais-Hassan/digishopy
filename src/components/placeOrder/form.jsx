@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Select from "./select";
+import Select from "../inputFields/select";
 import { provinces } from "../../utils/data";
 import { BsCartXFill } from "react-icons/bs";
 import { useFormik } from "formik";
@@ -7,15 +7,14 @@ import * as Yup from "yup";
 import { placeOrder } from "../../services/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { clearCart } from "../../redux/actions/productsActions";
+import { useDispatch, useSelector } from "react-redux";
 
-const Form = ({
-  cartItems,
-  price,
-  items,
-  deliveryCharges,
-  openModal,
-  clearCartItems,
-}) => {
+const Form = ({ openModal }) => {
+  const { cartItems, deliveryCharges, summary } = useSelector(
+    (state) => state.productsReducer
+  );
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const initialValues = {
     firstName: "",
@@ -46,7 +45,7 @@ const Form = ({
       await placeOrder(formik.values)
         .then(() => {
           formik.resetForm();
-          clearCartItems();
+          dispatch(clearCart());
           openModal();
         })
         .catch(() => {
@@ -226,7 +225,7 @@ const Form = ({
                 <input
                   type="text"
                   placeholder="Total Price"
-                  value={`Total Amount: ${price}`}
+                  value={`Total Amount: ${summary.price}`}
                   disabled
                 />
               </div>
@@ -234,7 +233,7 @@ const Form = ({
                 <input
                   type="text"
                   placeholder="Total Items"
-                  value={`Total Products: ${items}`}
+                  value={`Total Products: ${summary.items}`}
                   disabled
                 />
               </div>
@@ -257,9 +256,11 @@ const Form = ({
                 <input
                   type="text"
                   placeholder="Total Price"
-                  value={`${parseFloat(price)} + ${parseFloat(
+                  value={`${parseFloat(summary.price)} + ${parseFloat(
                     deliveryCharges
-                  )} = ${parseFloat(price) + parseFloat(deliveryCharges)}`}
+                  )} = ${
+                    parseFloat(summary.price) + parseFloat(deliveryCharges)
+                  }`}
                   disabled
                 />
               </div>

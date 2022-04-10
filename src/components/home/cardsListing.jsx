@@ -1,16 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import useProducts from "../../hooks/useProducts";
 import Card from "./card";
 
-const CardsListing = ({
-  cartItems,
-  setCartItems,
-  summary,
-  setSummary,
-  brandFilters,
-  genderFilters,
-}) => {
+const CardsListing = ({ brandFilters, genderFilters }) => {
   const { data, loading } = useProducts(brandFilters, genderFilters);
 
   return (
@@ -20,13 +11,7 @@ const CardsListing = ({
         : data.length
         ? data?.map((item) => (
             <div key={item.id}>
-              <Card
-                data={item}
-                cartItems={cartItems}
-                setCartItems={setCartItems}
-                setSummary={setSummary}
-                summary={summary}
-              />
+              <Card data={item} />
             </div>
           ))
         : "No Products found"}

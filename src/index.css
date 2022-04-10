@@ -10,9 +10,6 @@ html {
 }
 
 body {
-  /* font-family: "Josefin Sans", sans-serif; */
-  /* font-family: "Montserrat", sans-serif; */
-  /* font-family: "Open Sans", sans-serif; */
   font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -41,6 +38,7 @@ code {
   --primary-second: #f2f2f2;
   --primary-third: #119fbf;
   --txt-color: #000000;
+  --txt-white: #ffffff;
   --txt-color-light: #b3b3b3;
   --black: #000000;
   --white: #ffffff;
@@ -78,4 +76,8 @@ hr {
   background-color: var(--primary-second);
   border: none;
   margin: 10px 0;
+}
+
+strike {
+  color: var(--txt-color-light);
 }

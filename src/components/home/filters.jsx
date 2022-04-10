@@ -1,12 +1,8 @@
+import { useSelector } from "react-redux";
 import useBrands from "../../hooks/useBrands";
 import { genderData } from "../../utils/data";
 
-const Filters = ({
-  hideFilters,
-  setGenderFilters,
-  setBrandFilters,
-  brandFilters,
-}) => {
+const Filters = ({ setGenderFilters, setBrandFilters, brandFilters }) => {
   const { data, loading } = useBrands();
 
   const handleGender = (e) => {
@@ -24,8 +20,16 @@ const Filters = ({
     }
   };
 
+  const clearFilters = () => {
+    setGenderFilters("");
+    setBrandFilters([]);
+  };
+
   return (
-    <div className={`filters ${hideFilters}`}>
+    <div className="filters">
+      <button className="clear__filter" onClick={clearFilters}>
+        Clear Filters
+      </button>
       <h1>Filters</h1>
       <hr />
       <div className="filter__section">
