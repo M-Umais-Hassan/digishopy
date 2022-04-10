@@ -26,3 +26,18 @@
 .product__details .details button:hover {
   transform: scale(0.9);
 }
+
+@media screen and (max-width: 810px) {
+  .product__details {
+    flex-direction: column;
+  }
+  .product__details .slider {
+    width: 100%;
+  }
+
+  .product__details .details {
+    width: 100%;
+    padding: 0;
+    margin-top: 50px;
+  }
+}
