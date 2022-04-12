@@ -19,14 +19,11 @@ const Card = ({ data }) => {
   };
   return (
     <div className="product__card">
-      <button className="view__details">
-        <Link to={`/product/${data.id}`}>
-          <BiExpand />
-        </Link>
-      </button>
-      <div className="img__box">
-        <img src={data.image} alt="product" />
-      </div>
+      <Link to={`/product/${data.id}`}>
+        <div className="img__box">
+          <img src={data.image} alt="product" />
+        </div>
+      </Link>
       <div className="price__box">
         <div className="title__area">
           <h3>
