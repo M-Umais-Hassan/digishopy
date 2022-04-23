@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions/productsActions";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import { BiExpand } from "react-icons/bi";
 
 const Card = ({ data }) => {
   const dispatch = useDispatch();
